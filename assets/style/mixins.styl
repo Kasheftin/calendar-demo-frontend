@@ -1,0 +1,98 @@
+
+sis-double-chevron(size = 10px, weight = 1px, direction = 'right', color = #000, hover = #000)
+  width (2 * size)
+  height (2 * size)
+  &::after, &::before
+    position absolute
+    content ''
+    display block
+    width size
+    height size
+    border weight solid color
+    border-width weight weight 0 0
+    top 50%
+    left 50%
+    transition all 0.3s ease
+    transform-origin center center
+    if direction == 'left'
+      transform rotate(-135deg)
+      margin-top (-0.5 * size)
+      margin-left (-0.5 * size)
+    if direction == 'right'
+      transform rotate(45deg)
+      margin-top (-0.5 * size)
+      margin-left (-1 * size)
+    if direction == 'top'
+      transform rotate(-45deg)
+      margin-top (-0.4 * size)
+      margin-left (-0.5 * size)
+    if direction == 'bottom'
+      transform rotate(135deg)
+      margin-top (-0.8 * size)
+      margin-left (-0.5 * size)
+  &:hover::after, &:hover::before
+    border-color hover
+  &::after
+    if direction == 'left'
+      margin-left (-0.5 * size + 4 * weight)
+    if direction == 'right'
+      margin-left (-1 * size + 4 * weight)
+    if direction == 'top'
+      margin-top (-0.4 * size + 4 * weight)
+    if direction == 'bottom'
+      margin-top (-0.8 * size + 4 * weight)
+
+sis-chevron(size = 10px, weight = 1px, direction = 'right', color = #000, hover = #000)
+  width (2 * size)
+  height (2 * size)
+  &::before
+    position absolute
+    content ''
+    display block
+    width size
+    height size
+    border weight solid color
+    border-width weight weight 0 0
+    top 50%
+    left 50%
+    transition all 0.3s ease
+    transform-origin center center
+    if direction == 'left'
+      transform rotate(-135deg)
+      margin-top (-0.5 * size)
+      margin-left (-0.35 * size)
+    if direction == 'right'
+      transform rotate(45deg)
+      margin-top (-0.5 * size)
+      margin-left (-0.8 * size)
+    if direction == 'top'
+      transform rotate(-45deg)
+      margin-top (-0.28 * size)
+      margin-left (-0.5 * size)
+    if direction == 'bottom'
+      transform rotate(135deg)
+      margin-top (-0.8 * size)
+      margin-left (-0.5 * size)
+  &:hover::before
+    border-color hover
+
+sis-hamburger(width = 20px, height = 10px, weight = 1px, color = #000, hover = #000)
+  width width
+  height 2 * height + weight
+  position absolute
+  span
+    position absolute
+    top 0
+    left 0
+    width width
+    height weight
+    border-radius weight / 2
+    background-color color
+    &:nth-child(1)
+      top 0
+    &:nth-child(2)
+      top height
+    &:nth-child(3)
+      top 2 * height
+  &:hover span
+    background-color hover

@@ -1,0 +1,85 @@
+.sis-calendar-popup
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index 10050
+  &__background
+    position: absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    background-color rgba(0,0,0,0.5)
+  &__window
+    position absolute
+    background-color #FFFFFF
+    box-shadow 1px 1px 2px rgba(0,0,0,0.75)
+    &:after
+      content: ''
+      position absolute
+      pointer-events none
+      border 10px solid transparent
+    &.-center.-below
+      transform translate(-50%, 0)
+      &:after
+        border-top 0
+        border-bottom 10px solid #FFFFFF
+        bottom 100%
+        left 50%
+        margin-left -10px
+    &.-center.-above
+      transform translate(-50%, -100%)
+      &:after
+        border-bottom 0
+        border-top 10px solid #FFFFFF
+        top 100%
+        left 50%
+        margin-left -10px
+    &.-left.-above
+      transform translate(-100%, -100%)
+      &:after
+        border-right 0
+        border-left 10px solid #FFFFFF
+        left 100%
+        top 100%
+        margin-top -20px
+    &.-left.-middle
+      transform translate(-100%, -50%)
+      &:after
+        border-right 0
+        border-left 10px solid #FFFFFF
+        left 100%
+        top 50%
+        margin-top -10px
+    &.-left.-below
+      transform translate(-100%, 0)
+      &:after
+        border-right 0
+        border-left 10px solid #FFFFFF
+        left 100%
+        top 0
+    &.-right.-above
+      transform translate(0, -100%)
+      &:after
+        border-left 0
+        border-right 10px solid #FFFFFF
+        right 100%
+        top 100%
+        margin-top -20px
+    &.-right.-middle
+      transform translate(0, -50%)
+      &:after
+        border-left 0
+        border-right 10px solid #FFFFFF
+        right 100%
+        top 50%
+        margin-top -10px
+    &.-right.-below
+      transform translate(0, 0)
+      &:after
+        border-left 0
+        border-right 10px solid #FFFFFF
+        right 100%
+        top 0

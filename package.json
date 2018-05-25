@@ -1,0 +1,38 @@
+{
+  "name": "calendar-demo-frontend",
+  "version": "1.0.0",
+  "description": "Nuxt.js + Vuetify.js project",
+  "author": "Kasheftin <Kasheftin@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "PORT=41209 nuxt",
+    "build": "nuxt build",
+    "start": "PORT=41209 nuxt start",
+    "generate": "nuxt generate",
+    "prebuild": "node_modules/.bin/stylus --compress --include-css --hoist-atrules < assets/style/prebuild.styl > static/prebuild.css"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cookie": "^0.3.1",
+    "jquery": "^3.3.1",
+    "js-cookie": "^2.2.0",
+    "moment": "^2.22.1",
+    "nuxt": "^1.0.0",
+    "underscore": "^1.9.0",
+    "velocity-animate": "^1.5.1",
+    "vuetify": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.1.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
+  }
+}

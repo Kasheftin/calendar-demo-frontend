@@ -1,0 +1,291 @@
+.sis-ep
+  display flex
+  flex-direction column
+  width 275px
+  height 525px
+  color $calendar-popup-text
+  &.-create
+    height 600px
+  &__header
+    flex 0 0 40px
+    border-bottom 1px solid $calendar-popup-border
+    padding-left 40px
+    position relative
+    &.-create
+      padding-left 10px
+    &-text
+      color $link-color
+      font-size 15px
+      line-height 40px
+      font-weight bold
+      white-space nowrap
+      overflow hidden
+      text-overflow ellipsis
+      text-transform uppercase
+      margin-top 5px
+    &-close
+      position absolute
+      color $calendar-popup-control
+      top 10px
+      right 9px
+      font-size 22px
+      line-height 20px
+      margin 0
+      padding 0
+    &-back
+      position absolute
+      color $calendar-popup-control
+      top 13px
+      left 13px
+      sis-chevron(10px, 1px, 'left', $calendar-popup-control, darken($calendar-popup-control, 30%))
+      font-size 20px
+      line-height 20px
+      margin 0
+      padding 0
+  &__weekday-btns
+    display flex
+    .btn
+      padding 0
+      font-size 12px
+      flex 1
+
+  &__loading
+    position absolute
+    bottom 0
+    left 0
+    right 0
+
+  &__body
+    flex 1 0 auto
+    position relative
+    &-tabs
+      position absolute
+      top 0
+      left 0
+      bottom 0
+      right 0
+      overflow hidden
+    &-tab
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      background-color $white
+
+  &__container
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    display flex
+    flex-direction column
+
+  &__content
+    flex 1 1 auto
+    overflow-y auto
+    overflow-x hidden
+    display flex
+    flex-direction column
+    &.-centered
+      justify-content center
+    &-inner
+      &.-centered
+        margin auto
+      &.-vcentered
+        margin auto 0
+      &.-hcentered
+        margin 0 auto
+
+  &__footer
+    flex 0 0 auto
+
+  &__section
+    border-bottom 1px solid $calendar-popup-border
+    padding 7px 0
+    font-size 12px
+    line-height 20px
+    &.-no-border
+      border 0
+    &:last-child
+      border-bottom 0
+    &.-rev
+      border-bottom 0
+      border-top 1px solid $calendar-popup-border
+    &-header
+      font-weight bold
+      margin-left 10px
+      font-size 16px
+      line-height 20px
+      margin-bottom 5px
+      position relative
+      height 30px
+      display flex
+      align-items center
+      &.-checkbox
+        margin-left 0
+        padding-left 50px
+      &-text
+        flex-grow 1
+    &-switch
+      position absolute
+      left 30px
+      font-size 14px
+      width 14px
+      height 14px
+
+  &__sub-section
+    border-bottom 1px solid $calendar-popup-sub
+    &:last-child
+      border-bottom 0
+    &.-none,&.-no-border
+      border-bottom 0
+
+  &__block
+    padding 3px 0
+    display flex
+    &-icon
+      flex 0 0 30px
+      margin 0 5px
+      height 20px
+      &.-form-icon
+        padding-top 2.20px
+      &-avatar
+        width 20px
+        height 20px
+      .icon
+        font-size 20px
+        line-height 20px
+        height 20px
+        color $calendar-popup-icon
+        display block
+    &-checkbox
+      position absolute
+      top 50%
+      left 5px
+      transform translateY(-50%)
+    &-content
+      flex-grow 1
+      position relative
+      &.-checkboxes
+        padding-left 25px
+      &.-empty
+        font-style italic
+      &.-chips
+        margin-top -7px
+      &-line
+        margin-top 5px
+        &:first-child
+          margin-top 0
+      .input-group--select__autocomplete
+        width 0
+      .radio-group
+        padding 0
+      .input-group.radio label
+        font-size 12px
+        color $calendar-popup-text !important
+      .chip
+        font-size 12px
+        background-color $calendar-chip-background
+        color $calendar-popup-text
+
+      &.-last
+        margin-right 10px
+      &.-first
+        margin-left 10px
+    &-control
+      flex 0 0 20px
+      margin 0 5px
+      height 20px
+      text-align center
+      color $calendar-popup-icon
+
+  &__control
+    position relative
+    display block
+    width 20px
+    height 20px
+    font-size 20px
+    line-height 0
+    text-decoration none
+    text-align center
+    color $calendar-popup-text
+    border-radius 50%
+    &.-chevron-right
+      sis-chevron(10px, 1px, 'right', $calendar-popup-control, $link-color)
+      &.-bold
+        sis-double-chevron(10px, 1px, 'right', darken($calendar-popup-control,20%), $link-color)
+    .icon
+      font-size 20px
+      line-height 20px
+      height 20px
+      color $calendar-popup-control
+  a&__control:hover
+    background-color rgba($link-color, 0.12)
+
+  &__icon.-status, &__icon.-color
+    display inline-block
+    margin-left 3px
+    margin-top 3px
+    width 14px
+    height 14px
+    border-radius 50%
+    &.-status-1, &.-status-work
+      background-color #75b563
+    &.-status-2, &.-status-lunch, &.-status-pause, &.-status-time_off
+      background-color #e13a51
+    &.-status-3
+      background-color #f3a835
+    &.-color-blue
+      background-color $color-blue
+    &.-color-green
+      background-color $color-green
+    &.-color-yellow
+      background-color $color-yellow
+    &.-color-red
+      background-color $color-red
+    &.-color-purple
+      background-color $color-purple
+
+  &__buttons
+    text-align right
+
+  &__badge
+    min-width 18px
+    height 18px
+    font-size 11px
+    line-height 18px
+    background-color $link-color
+    color $white
+    border-radius 50%
+    display inline-block
+    text-align center
+
+  &__action.-active
+    cursor pointer
+    transition all 0.3s ease
+    &:hover
+      background-color rgba($link-color, 0.12)
+      color darken($link-color, 20%)
+      .sis-ep__control.-chevron-right::before, .sis-ep__control.-chevron-right::after
+        border-color darken($link-color, 20%)
+      .sis-ep__block-icon .icon
+        color darken($link-color, 20%)
+      .chip
+        background-color darken($calendar-chip-background, 10%)
+
+  .input-group--text-field input
+    width 0
+
+.sis-ep-slide
+  &-enter-active, &-leave-active
+    transition transform 0.5s ease
+  &-enter.-switch-forward
+    transform translateX(100%)
+  &-leave-to.-switch-forward
+    transform translateX(-100%)
+  &-enter.-switch-backward
+    transform translateX(-100%)
+  &-leave-to.-switch-backward
+    transform translateX(100%)

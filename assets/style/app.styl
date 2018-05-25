@@ -1,0 +1,351 @@
+$bg1 = #e2e6e7
+$bg2 = #f7f7f7
+$bg-today = #dfefff
+$header-bg-today = #badcff
+$border1 = #b6b7b9
+$cab1 = #c07474
+$cab2 = #5e748e
+$blue-block = rgb(0, 171, 196)
+$primary = #1976d2
+$drawing = rgba($primary, 0.6)
+$border = #909090
+
+$calendar-popup-border = #e3e7e8
+$calendar-popup-sub = #f7f7f7
+$calendar-popup-control = #b4bdc4
+$calendar-popup-text = #475d6b
+$calendar-popup-icon = #bec3c7
+$link-color = #2BA4BF
+
+$calendar-title-color = $link-color
+$calendar-text-color = $wet_asphalt
+$calendar-border-color = #B6B7B9
+$calendar-primary-background = #f7f7f7
+$calendar-secondary-background = #e2e6e7
+$calendar-chip-background = #eef3f6
+$calendar-status-transition-background = #bacaca
+
+$color-blue = #00abc4
+$color-green = #6fb95b
+$color-yellow = #f7ac00
+$color-red = #e8354c
+$color-purple = #afa0cb
+
+@import 'mixins'
+@import 'CalendarPopup'
+@import 'CalendarEditPopup'
+
+.toolbar--fixed
+  z-index 10
+.snack
+  z-index 10060
+
+.fade-enter-active, .fade-leave-active
+  transition opacity .5s
+.fade-enter, .fade-leave-to
+  opacity 0
+
+.ev-calendar
+  font-size 13px
+  background-color $bg1
+  &-header
+    display flex
+    margin-left 50px
+    height 70px
+    &-row
+      display flex
+      flex 1 0 0
+      flex-direction column
+      &__title
+        flex 1 0 auto
+        text-align center
+      &__subrows
+        display flex
+        flex 1 0 auto
+      &.-even
+        background-color $bg2
+      &.-today
+        background-color $header-bg-today
+    &-subrow
+      flex 1 0 0
+      text-align center
+
+  &-body
+    display flex
+
+  &-side
+    display flex
+    flex 0 0 50px
+    flex-direction column
+    &-row
+      min-height 30px
+      flex 1 0 0
+      display flex
+      align-items center
+      &__title
+        padding-left 5px
+        position relative
+        top -15px
+
+  &-grid
+    position absolute
+    z-index 2
+    top 0
+    right 0
+    bottom 0
+    left 0
+    display flex
+    flex-direction column
+    pointer-events none
+    &-row
+      flex 1 0 0
+      &.-full
+        border-top 1px solid $border1
+      &.-half
+        border-top 1px dotted $border1
+
+  &-draw
+    position absolute
+    z-index 5
+    top 0
+    right 0
+    bottom 0
+    left 0
+    cursor copy
+
+  &-content
+    position relative
+    display flex
+    flex 1 0 auto
+    cursor copy
+    &-row
+      flex 1 0 0
+      position relative
+      display flex
+      &.-even
+        background-color $bg2
+      /*
+      &.-today
+        background-color $bg-today
+      &.-today.-even
+        background-color #fff
+      */
+    &-subrow
+      flex 1 0 0
+      position relative
+    &.-drawing
+      cursor copy
+    &.-drawing-always-active
+      cursor copy
+
+  &-timeblock
+    position absolute
+    z-index 4
+    cursor pointer
+    transition all 0.1s ease
+    &__item
+      position absolute
+      top 3px
+      right 2px
+      bottom 2px
+      left 2px
+      background-color lighten($primary, 30%)
+      box-shadow inset 0 0 1px rgba(0, 0, 0, 0.5)
+      border-radius 9px
+      transition background-color 0.3s ease
+      display flex
+      align-items center
+      justify-content center
+      &-name
+        color #fff
+        font-weight bold
+        text-shadow 0 1px rgba(0, 0, 0, 0.5)
+        overflow hidden
+        height 25px
+        line-height 25px
+        &:before
+          content ''
+          display inline-block
+        &-text
+          white-space nowrap
+          display inline-block
+    &:hover &__item
+      background-color $primary
+    &.-drawing &__item
+      background-color $drawing
+      box-shadow inset 0 0 1px rgba(0, 0, 0, 0.5), 1px 1px 5px rgba(0,0,0,0.5)
+
+    &.-color-blue &__item
+      background-color $color-blue
+    &.-color-blue:hover &__item
+      background-color darken($color-blue, 20%)
+    &.-color-green &__item
+      background-color $color-green
+    &.-color-green:hover &__item
+      background-color darken($color-green, 20%)
+    &.-color-yellow &__item
+      background-color $color-yellow
+    &.-color-yellow:hover &__item
+      background-color darken($color-yellow, 20%)
+    &.-color-red &__item
+      background-color $color-red
+    &.-color-red:hover &__item
+      background-color darken($color-red, 20%)
+    &.-color-purple &__item
+      background-color $color-purple
+    &.-color-purple:hover &__item
+      background-color darken($color-purple, 20%)
+
+    &.-status-3 &__item:after
+      content: ''
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      background repeating-linear-gradient(-45deg, rgba(#fff, 0.3), rgba(#fff, 0.3) 3px, rgba(#fff, 0.5) 4px, rgba(#fff, 0.3) 5px)
+
+    &.-status-2 &__item:after
+      content: ''
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      background repeating-linear-gradient(-45deg, rgba(#fff, 0.3), rgba(#fff, 0.3) 3px, rgba(#fff, 0.5) 4px, rgba(#fff, 0.3) 5px), repeating-linear-gradient(45deg, rgba(#fff, 0.3), rgba(#fff, 0.3) 3px, rgba(#fff, 0.5) 4px, rgba(#fff, 0.3) 5px)
+
+    &.-muted
+      pointer-events none
+      opacity 0.5
+    &__top
+      position absolute
+      top 0
+      right 0
+      left 0
+      height 10px
+      cursor n-resize
+    &__bottom
+      position absolute
+      bottom 0
+      right 0
+      left 0
+      height 10px
+      cursor s-resize
+
+  &-tooltips
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    z-index 10050
+    pointer-events none
+  &-tooltip
+    position absolute
+    min-width 150px
+    width 150px
+    padding 10px
+    &__header
+      white-space nowrap
+      color $primary
+      font-weight bold
+      font-size 12px
+      line-heihgt 20px
+      text-transform uppercase
+    &__field
+      font-size 12px
+      line-height 20px
+      color $primary
+      overflow hidden
+      text-overflow ellipsis
+      white-space nowrap
+    &__text
+      font-size 12px
+      line-height 20px
+      color $primary
+
+  &-popup
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    left 0
+    z-index 10050
+    &__background
+      position: absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      background-color rgba(0,0,0,0.5)
+    &__window
+      position absolute
+      background-color #fff
+      box-shadow 1px 1px 2px rgba(0,0,0,0.75)
+      &:after
+        content: ''
+        position absolute
+        pointer-events none
+        border 10px solid transparent
+      &.-center.-below
+        transform translate(-50%, 0)
+        &:after
+          border-top 0
+          border-bottom 10px solid #fff
+          bottom 100%
+          left 50%
+          margin-left -10px
+      &.-center.-above
+        transform translate(-50%, -100%)
+        &:after
+          border-bottom 0
+          border-top 10px solid #fff
+          top 100%
+          left 50%
+          margin-left -10px
+      &.-left.-above
+        transform translate(-100%, -100%)
+        &:after
+          border-right 0
+          border-left 10px solid #fff
+          left 100%
+          top 100%
+          margin-top -20px
+      &.-left.-middle
+        transform translate(-100%, -50%)
+        &:after
+          border-right 0
+          border-left 10px solid #fff
+          left 100%
+          top 50%
+          margin-top -10px
+      &.-left.-below
+        transform translate(-100%, 0)
+        &:after
+          border-right 0
+          border-left 10px solid #fff
+          left 100%
+          top 0
+      &.-right.-above
+        transform translate(0, -100%)
+        &:after
+          border-left 0
+          border-right 10px solid #fff
+          right 100%
+          top 100%
+          margin-top -20px
+      &.-right.-middle
+        transform translate(0, -50%)
+        &:after
+          border-left 0
+          border-right 10px solid #fff
+          right 100%
+          top 50%
+          margin-top -10px
+      &.-right.-below
+        transform translate(0, 0)
+        &:after
+          border-left 0
+          border-right 10px solid #fff
+          right 100%
+          top 0
