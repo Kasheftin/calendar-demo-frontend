@@ -10,6 +10,8 @@ export default {
     create:
       [0, (options, params) => axios.post(`calendar/timeblocks/`, params, options)],
     update:
-      [0, (options, params) => axios.patch(`calendar/timeblocks/${params.id}`, _.omit(params, 'id'), options)]
+      [0, (options, params) => axios.patch(`calendar/timeblocks/${params.id}`, _.omit(params, 'id'), options)],
+    init:
+      [0, (options, params) => axios.post(`calendar/init`, params, options)]
   }
 }

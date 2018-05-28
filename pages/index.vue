@@ -1,45 +1,43 @@
 <template>
-  <v-layout column>
-    <calendar-toolbar></calendar-toolbar>
-    <calendar></calendar>
+  <v-layout align-center justify-center>
+    <v-jumbotron class="elevation-10" :style="{maxWidth: '500px', height: 'auto'}">
+      <v-container fill-height>
+        <v-layout align-center>
+          <v-flex>
+            <h3 class="display-2 my-3">Weekly Calendar Demo</h3>
+            <span class="subheading">This is the demo for [...] and [...] articles.</span>
+            <v-divider class="my-3"></v-divider>
+            <div class="title mb-3">Available Actions: </div>
+            <v-btn large block color="primary" class="btn--wrap" :loading="loading" :disabled="loading" @click="create('empty')">Create New Empty Calendar</v-btn>
+            <v-btn large block color="primary" class="btn--wrap" :loading="loading" :disabled="loading" @click="create('copy-dance-seed')">Create New Calendar and Populate it with Dance Studio Seed</v-btn>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-jumbotron>
   </v-layout>
 </template>
 
 <script>
-import moment from 'moment'
-import CalendarToolbar from '~/components/calendar/Toolbar'
-import Calendar from '~/components/calendar/Calendar'
-
 export default {
-  components: {
-    CalendarToolbar,
-    Calendar
-  },
-  fetch ({app, route, redirect, store}) {
-    if (!route.query.week) {
-      const newRoute = app.router.resolve({query: {...route.query, week: moment().format('YYYYWW')}}, route)
-      return redirect(newRoute.href)
+  data () {
+    return {
+      loading: false
     }
-    return Promise.resolve()
-      .then(() => store.dispatch('calendar/set', {week: route.query.week}))
-      .then(() => store.dispatch('calendar/fetch'))
   },
-  computed: {
-    week () { return this.$store.state.calendar.week },
-    settings () { return this.$store.state.ux.settings }
-  },
-  watch: {
-    week (week) {
-      this.$router.push({
-        query: {
-          ...this.$route.query,
-          week
-        }
-      })
-      this.$store.dispatch('calendar/fetch')
-    },
-    settings () {
-      this.$store.dispatch('calendar/fetch')
+  methods: {
+    create (type) {
+      this.loading = true
+      this.$store
+        .dispatch('fetch/fetch', {path: 'calendar.init', data: {type}})
+        .then(response => {
+          this.loading = false
+          this.$snack({message: response.data.message, type: 'success'})
+          this.$router.push({name: ':calendarid', params: {calendarid: response.data.data.calendar_id}})
+        })
+        .catch(error => {
+          this.loading = false
+          this.$snack({message: error.response.data.message, type: 'error'})
+        })
     }
   }
 }

@@ -102,6 +102,10 @@ export const actions = {
       ...options
     }
     const params = {...data}
+    // Push calendar_id to every request if defined;
+    if (rootState.calendar.calendar_id) {
+      params.calendar_id = rootState.calendar.calendar_id
+    }
     if (!opts.cache) return (url ? axios.get(url, {params}) : resource.apply(this, [{}, params])).then(response => processResponse(response, opts, {state: rootState}))
     const cacheKey = path + '-' + (opts.hasOwnProperty('cacheKey') ? opts.cacheKey : JSON.stringify(params)) + (url || '')
     const cacheEntry = initCacheEntry(cacheKey)

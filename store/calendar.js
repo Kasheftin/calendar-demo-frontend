@@ -3,6 +3,7 @@ import {prepareRows} from '~/utils/rows'
 
 export const state = () => {
   return {
+    calendar_id: null,
     week: null,
     statuses: [],
     locations: [],
